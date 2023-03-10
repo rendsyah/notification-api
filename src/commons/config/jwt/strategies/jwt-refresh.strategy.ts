@@ -12,7 +12,7 @@ import { ApiUnauthorizedException } from '@commons/exception/api-exception';
 import { ProjectDbService } from '@datasource/project-db/project-db.service';
 
 // Import Interfaces
-import { IAuthTokens } from '@modules/auth/interfaces/auth.interface';
+import { IAuthTokens, IResultAuthTokens } from '@modules/auth/interfaces/auth.interface';
 import { IGetProjectDbModels } from '@datasource/interfaces/project-db.interface';
 
 @Injectable()
@@ -29,7 +29,7 @@ export class JwtRefreshStrategy extends PassportStrategy(Strategy, 'jwt-refresh'
         this.projectDbModels = this.projectDbService.getModels();
     }
 
-    async validate(request: Request, payload: IAuthTokens) {
+    async validate(request: Request, payload: IAuthTokens): Promise<IResultAuthTokens> {
         const getUser = await this.projectDbModels.UsersModels.findOne({ where: { id: payload.sub } });
         const getRefreshToken = request.get('authorization');
         const getHashToken = getUser.hash_token;

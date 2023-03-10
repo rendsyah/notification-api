@@ -1,5 +1,5 @@
 // Import All Repository
-import { AccessRepository, UsersRepository } from './repository';
+import { AccessRepository, TacoAttachmentRepository, TacoStoreRepository, UsersRepository } from './repository';
 
 // Define All Project DB Providers
-export const ProjectDbProviders = [AccessRepository, UsersRepository];
+export const ProjectDbProviders = [AccessRepository, TacoAttachmentRepository, TacoStoreRepository, UsersRepository];

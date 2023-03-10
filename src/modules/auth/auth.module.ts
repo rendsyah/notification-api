@@ -8,7 +8,6 @@ import { JwtStrategy } from '@commons/config/jwt/strategies/jwt.strategy';
 import { JwtRefreshStrategy } from '@commons/config/jwt/strategies';
 
 // Import Datasource
-import { LogsDbModule } from '@datasource/logs-db/logs-db.module';
 import { ProjectDbModule } from '@datasource/project-db/project-db.module';
 
 // Import Service
@@ -16,7 +15,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 
 @Module({
-    imports: [JwtModule.registerAsync(JwtConfigAsync), LogsDbModule, ProjectDbModule],
+    imports: [JwtModule.registerAsync(JwtConfigAsync), ProjectDbModule],
     controllers: [AuthController],
     providers: [AuthService, JwtStrategy, JwtRefreshStrategy],
 })

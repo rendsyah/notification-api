@@ -11,7 +11,7 @@ import { MasterAccess } from '../models/master_access.entity';
 
 @Injectable()
 export class AccessRepository extends BaseRepository<MasterAccess> {
-    constructor(@InjectRepository(MasterAccess) accessModels: Repository<MasterAccess>) {
+    constructor(@InjectRepository(MasterAccess) private readonly accessModels: Repository<MasterAccess>) {
         super(accessModels);
     }
 }

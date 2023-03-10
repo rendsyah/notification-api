@@ -13,6 +13,9 @@ import { User } from '@commons/decorator/user.decorator';
 // Import Dto
 import { AuthLoginDto, AuthRegisterDto, AuthUsersDto } from './dto/auth.dto';
 
+// Import Interfaces
+import { IAuthResponse } from './interfaces/auth.interface';
+
 // Import Service
 import { AuthService } from './auth.service';
 
@@ -23,7 +26,7 @@ export class AuthController {
 
     @Post('login')
     @ApiPostServiceDocs('login', AuthLoginDto)
-    async authLogin(@Body(AuthLoginSchema) dto: AuthLoginDto) {
+    async authLoginController(@Body(AuthLoginSchema) dto: AuthLoginDto): Promise<IAuthResponse> {
         return await this.authService.authLogin(dto);
     }
 
@@ -31,7 +34,7 @@ export class AuthController {
     @Post('register')
     @ApiSecurity('authorization')
     @ApiPostServiceDocs('register', AuthRegisterDto)
-    async authRegister(@Body(AuthRegisterSchema) dto: AuthRegisterDto) {
+    async authRegisterController(@Body(AuthRegisterSchema) dto: AuthRegisterDto): Promise<IAuthResponse> {
         return await this.authService.authRegister(dto);
     }
 
@@ -39,7 +42,7 @@ export class AuthController {
     @Get('logout')
     @ApiSecurity('authorization')
     @ApiGetServiceDocs('logout')
-    async authLogout(@User() dto: AuthUsersDto) {
+    async authLogoutController(@User() dto: AuthUsersDto): Promise<IAuthResponse> {
         return await this.authService.authLogout(dto);
     }
 
@@ -47,7 +50,7 @@ export class AuthController {
     @Get('refresh')
     @ApiSecurity('authorization')
     @ApiGetServiceDocs('refresh token')
-    async authRefresh(@User() dto: AuthUsersDto) {
+    async authRefreshController(@User() dto: AuthUsersDto): Promise<IAuthResponse> {
         return await this.authService.authRefresh(dto);
     }
 }

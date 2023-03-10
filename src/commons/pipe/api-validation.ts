@@ -11,7 +11,7 @@ import { ApiBadRequestException } from '@commons/exception/api-exception';
 export abstract class ApiValidationPipe implements PipeTransform {
     constructor() {}
 
-    public async transform(value: unknown, metadata: ArgumentMetadata) {
+    public async transform(value: unknown, metadata: ArgumentMetadata): Promise<unknown> {
         try {
             await this.buildSchema().validateAsync(value, { abortEarly: false });
             return value;

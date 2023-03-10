@@ -12,7 +12,7 @@ import { ApiForbiddenException } from '@commons/exception/api-exception';
 export class RolesAuthGuard implements CanActivate {
     constructor(private readonly reflector: Reflector) {}
 
-    matchRole(roles: string[], userRole: string) {
+    matchRole(roles: string[], userRole: string): boolean {
         return roles.some((role) => role === userRole);
     }
 

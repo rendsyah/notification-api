@@ -127,6 +127,15 @@ export class HelperService {
         return result;
     }
 
+    public validateTextSpace(request: string): string {
+        let result = ""
+        for(let idf = 0; idf < request.length; idf++) {
+            result += request[idf] + " "
+        }
+
+        return result;
+    }
+
     public async validateHash(request: string): Promise<string> {
         return await bcrypt.hash(request, 10);
     }

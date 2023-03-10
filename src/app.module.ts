@@ -4,7 +4,6 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 
 // Import Commons
 import { EnvironmentConfigModule } from '@commons/config/environment/environment.module';
-import { MongooseConfigModule } from '@commons/config/databases/mongoose/mongoose.module';
 import { RedisConfigModule } from '@commons/config/databases/redis/bull.module';
 import { TypeOrmConfigModule } from '@commons/config/databases/typeorm/typeorm.module';
 import { StaticConfigModule } from '@commons/config/static/static.module';
@@ -15,6 +14,7 @@ import { ApiExceptionsFilter } from '@commons/filter/api-exception-filter';
 
 // Import All Service Modules
 import { AuthModule } from '@modules/auth/auth.module';
+import { BlastModule } from '@modules/blast/blast.module';
 
 // Import Service
 import { AppController } from './app.controller';
@@ -23,12 +23,12 @@ import { AppService } from './app.service';
 @Module({
     imports: [
         EnvironmentConfigModule,
-        MongooseConfigModule,
         RedisConfigModule,
         TypeOrmConfigModule,
         StaticConfigModule,
         HelperConfigModule,
         AuthModule,
+        BlastModule,
     ],
     controllers: [AppController],
     providers: [

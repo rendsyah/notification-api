@@ -23,7 +23,7 @@ async function bootstrap() {
     const SERVICE_PREFIX = configService.get('app.SERVICE_PREFIX');
     const SERVICE_DOCS = configService.get('app.SERVICE_DOCS');
 
-    const setupQueues = apiSetupQueues(app, []);
+    const setupQueues = await apiSetupQueues(app, ['blast_notification_processing', 'blast_image_processing']);
 
     app.enableCors();
     app.use(json());
@@ -34,7 +34,7 @@ async function bootstrap() {
     app.setGlobalPrefix(SERVICE_PREFIX);
 
     if (SERVICE_DOCS) {
-        const swaggerConfig = apiSwaggerConfig(app);
+        const swaggerConfig = await apiSwaggerConfig(app);
         SwaggerModule.setup('/api/docs', app, swaggerConfig);
     }
 

@@ -3,10 +3,10 @@ import { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, OpenAPIObject, SwaggerDocumentOptions, SwaggerModule } from '@nestjs/swagger';
 
 // Define Api Swagger Config
-export const apiSwaggerConfig = (app: INestApplication): OpenAPIObject => {
+export const apiSwaggerConfig = async (app: INestApplication): Promise<OpenAPIObject> => {
     const document = new DocumentBuilder()
-        .setTitle('SERVICE API')
-        .setDescription('SERVICE API documentation')
+        .setTitle('Blast Notification API')
+        .setDescription('Blast Notification API documentation')
         .setTermsOfService('http://example.com/terms')
         .setContact('Developer', 'http://www.example.com/support', 'example@gmail.com')
         .setVersion('1.0')

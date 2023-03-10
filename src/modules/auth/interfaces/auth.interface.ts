@@ -4,6 +4,13 @@ export interface IAuthTokens {
     username: string;
 }
 
+// Define Result Auth Tokens Interface
+export interface IResultAuthTokens {
+    userId: number;
+    username: string;
+    refreshToken?: string;
+}
+
 // Define Auth Response Interface
 export interface IAuthResponse {
     message?: string;

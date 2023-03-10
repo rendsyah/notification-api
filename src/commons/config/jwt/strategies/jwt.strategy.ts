@@ -6,7 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { Request } from 'express';
 
 // Import Interfaces
-import { IAuthTokens } from '@modules/auth/interfaces/auth.interface';
+import { IAuthTokens, IResultAuthTokens } from '@modules/auth/interfaces/auth.interface';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
@@ -18,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
         });
     }
 
-    async validate(payload: IAuthTokens) {
+    async validate(payload: IAuthTokens): Promise<IResultAuthTokens> {
         return {
             userId: payload.sub,
             username: payload.username,

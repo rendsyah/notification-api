@@ -5,7 +5,7 @@ import { BullAdapter } from '@bull-board/api/bullAdapter';
 import { createBullBoard } from '@bull-board/api';
 
 // Define Setup Bull Dashboard
-export const apiSetupQueues = (app: INestApplication, queue: string[]) => {
+export const apiSetupQueues = async (app: INestApplication, queue: string[]): Promise<ExpressAdapter> => {
     const bullAdapter = [];
 
     for (let index = 0; index < queue.length; index++) {

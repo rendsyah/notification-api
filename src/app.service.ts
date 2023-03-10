@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-    getWelcome(): string {
-        return 'Welcome to Service API';
+    async getWelcome(): Promise<string> {
+        return 'Welcome to Blast Notification API';
     }
 }
